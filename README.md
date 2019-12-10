@@ -10,6 +10,8 @@ e.g:
 
 will look for spot instances currently costing **at most** $0.0199/hour, considering only instance types that have at least 2 vCPUs and 8000 MiB of memory.
 
+At the end of the scan, you will be shown a list of AZs and instance types sorted by price.
+
 Requires a recent version of the [boto3](https://github.com/boto/boto3) library to be installed in your python interpreter.
 
 Tested with Python 3.7
