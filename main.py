@@ -360,8 +360,8 @@ def go_region(region, result_instance_types, max_price_usd_per_hour, min_vcpu_co
 
 def go(max_price_usd_per_hour, min_vcpu_count, min_memory_mib):
     max_price_usd_per_hour = float(max_price_usd_per_hour)
-    min_vcpu_count = int(min_vcpu_count)
-    min_memory_mib = int(min_memory_mib)
+    min_vcpu_count = float(min_vcpu_count)
+    min_memory_mib = float(min_memory_mib)
     print('Got max price $', max_price_usd_per_hour, '/hour')
     print('Got min vcpu count:', min_vcpu_count)
     print('Got minimum memory (MiB):', min_memory_mib)
