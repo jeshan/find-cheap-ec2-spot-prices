@@ -366,7 +366,8 @@ def go(max_price_usd_per_hour, min_vcpu_count, min_memory_mib):
     print('Got min vcpu count:', min_vcpu_count)
     print('Got minimum memory (MiB):', min_memory_mib)
     client = boto3.client('ec2')  # type: botostubs.EC2
-    regions = map(lambda x: x['RegionName'], client.describe_regions()['Regions'])
+    regions = list(map(lambda x: x['RegionName'], client.describe_regions()['Regions']))
+    print('got regions', regions)
     result_instance_types = []
     for region in regions:
         go_region(region, result_instance_types, max_price_usd_per_hour, min_vcpu_count, min_memory_mib)
