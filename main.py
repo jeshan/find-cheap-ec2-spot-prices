@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from concurrent.futures import ThreadPoolExecutor
 
 try:
     import botostubs
@@ -368,8 +369,12 @@ def go(max_price_usd_per_hour, min_vcpu_count, min_memory_mib):
     regions = list(map(lambda x: x['RegionName'], client.describe_regions()['Regions']))
     print('got regions', regions)
     result_instance_types = []
-    for region in regions:
-        go_region(region, result_instance_types, max_price_usd_per_hour, min_vcpu_count, min_memory_mib)
+
+    with ThreadPoolExecutor() as executor:
+        for region in regions:
+            executor.submit(
+                go_region, region, result_instance_types, max_price_usd_per_hour, min_vcpu_count, min_memory_mib
+            )
     sorted_result = list(
         sorted(
             result_instance_types, key=lambda x: x['SpotPrice'] + '-' + x['AvailabilityZone'] + '-' + x['InstanceType']
