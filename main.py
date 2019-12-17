@@ -384,4 +384,5 @@ def go(max_price_usd_per_hour, min_vcpu_count, min_memory_mib):
 
 if __name__ == '__main__':
     import sys
+
     go(sys.argv[1], sys.argv[2], sys.argv[3])
