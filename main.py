@@ -355,7 +355,6 @@ def go_region(region, result_instance_types, max_price_usd_per_hour, min_vcpu_co
                 break
             params['NextToken'] = result['NextToken']
             params['StartTime'] = params['StartTime'] + timedelta(hours=1)
-    return result_instance_types
 
 
 def go(max_price_usd_per_hour, min_vcpu_count, min_memory_mib):
