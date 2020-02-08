@@ -8,6 +8,11 @@ e.g:
 
 `python main.py 0.0199 2 8000`
 
+or with pipenv:
+
+`pipenv run python main.py 0.0199 2 8000`
+
+
 will look for spot instances currently costing **at most** $0.0199/hour, considering only instance types that have at least 2 vCPUs and 8000 MiB of memory.
 
 At the end of the scan, you will be shown a list of AZs and instance types sorted by price.
